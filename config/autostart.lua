@@ -1,0 +1,11 @@
+hl.on("hyprland.start", function()
+    hl.exec_cmd(terminal)
+    hl.exec_cmd("waybar")
+    hl.exec_cmd("hyprpaper")
+    hl.exec_cmd('mpvpaper -o "loop no-audio" "*" /home/gui/Downloads/Wallpaper/reze-drowning-in-serenity.3840x2160.mp4') 
+    hl.exec_cmd("greenclip daemon")
+    hl.exec_cmd("wl-paste --type text --watch cliphist store")
+    hl.exec_cmd("wl-paste --type image --watch cliphist store")
+end)
+
+print("Autostart configurado!")
