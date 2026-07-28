@@ -1,0 +1,40 @@
+# Arquivos temporários
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
+
+# Cache e logs
+*.log
+*.cache
+*.tmp
+
+# Configurações sensíveis (com cuidado!)
+.env
+.secrets
+*.key
+*.pem
+
+# Arquivos grandes
+*.iso
+*.img
+*.tar.gz
+*.zip
+
+# Pastas de cache
+.cache/
+.cargo/
+.python_cache/
+__pycache__/
+
+# Configurações pessoais que não devem ser compartilhadas
+.config/Code/
+.config/google-chrome/
+.mozilla/
+.ssh/
+.gnupg/
+
+# Backup automático
+*.bak
+*.old

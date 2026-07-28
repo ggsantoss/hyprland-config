@@ -1,0 +1,4 @@
+[wofi]
+show-icons = true
+icon-size = 32
+icon-theme = Papirus

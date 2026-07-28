@@ -1,0 +1,82 @@
+{
+  "layer": "top",
+  "position": "top",
+  "height": 34,
+
+  "modules-left": ["hyprland/workspaces"],
+  "modules-center": ["custom/day-clock"],
+  "modules-right": ["cpu", "memory", "network", "pipewire", "battery", "custom/notifications", "custom/pavucontrol"],
+
+  "hyprland/workspaces": {
+    "format": "{icon}",
+    "format-icons": {
+      "1": "",
+      "2": "",
+      "3": "",
+      "4": "",
+      "5": "",
+      "active": "",
+      "default": ""
+    }
+  },
+
+  "custom/notifications": {
+    "format": "  {}",
+    "exec": "dunstctl history | jq -r '.data[][] | .summary.data' | head -n 1 || echo 'Sem notificações'",
+    "interval": 5,
+    "tooltip": true,
+    "on-click": "~/.config/Scripts/notification/noti.sh"
+  },
+
+  "custom/pavucontrol": {
+      "format": "  {}",
+      "exec": "SECOND=$(pactl list sinks short | awk 'NR==2 {print $2}'); pactl get-sink-volume \"$SECOND\" | awk '{print $5}' | head -n1 | sed 's/%//'",
+      "interval": 1,
+      "tooltip": true,
+      "on-scroll-up": "SECOND=$(pactl list sinks short | awk 'NR==2 {print $2}'); pactl set-sink-volume \"$SECOND\" +5%",
+      "on-scroll-down": "SECOND=$(pactl list sinks short | awk 'NR==2 {print $2}'); pactl set-sink-volume \"$SECOND\" -5%",
+      "on-click": "pavucontrol" 
+  },
+
+  "custom/day-clock": {
+      "exec": "~/.config/waybar/day-clock.sh",
+      "interval": 60,
+      "format": "  {}",
+      "tooltip": true,
+      "tooltip-format": "{}",
+      "on-click": "~/.config/waybar/toggle-cal.sh"
+  },
+
+  "cpu": {
+    "format": "  {usage}%",
+    "interval": 5
+  },
+
+  "memory": {
+    "format": "󰘚  {}%"
+  },
+
+  "network": {
+    "format-wifi": "  {signalStrength}%",
+    "format-ethernet": "󰈀  Connected",
+    "format-disconnected": "󰖪  Offline",
+    "tooltip-format": "{ifname} via {gwaddr}"
+  },
+
+  "pipewire": {
+    "format": "{icon}  {volume}%",
+    "format-muted": "󰝟  Muted",
+    "format-icons": {
+      "default": ["", "", ""]
+    }
+  },
+
+  "battery": {
+    "format": "{icon}  {capacity}%",
+    "format-icons": ["", "", "", "", ""],
+    "states": {
+      "warning": 30,
+      "critical": 15
+    }
+  }
+}
